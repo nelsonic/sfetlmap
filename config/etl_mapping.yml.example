@@ -1,5 +1,5 @@
 google:
-  user: "user@groupon.com"
+  user: "user@org.com"
   password: "secret"
   # mapping spreadsheet key
   key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
@@ -7,7 +7,7 @@ google:
 emea:
   root: "tmp/prod/emea"
   salesforce:
-    user: "user@groupon.comemea.staging"
+    user: "user@org.com.prod1"
     password: ""
     token: ""
     login_url: "https://test.salesforce.com"
@@ -15,7 +15,7 @@ emea:
 us:
   root: "tmp/prod/us"
   salesforce:
-    user: "user@groupon.com"
+    user: "user@org.com.prod2"
     password: ""
     token: ""
     login_url: "https://login.salesforce.com"
