@@ -1,0 +1,23 @@
+# Replace with *Real* Credentials to Run Script ;-)
+google:
+  user: "nelson.correia@groupon.com"
+  password: "**********"
+  # mapping spreadsheet key
+  key: "0AhoexkkQigOidG0zczdTTHSZBRX3Mxd2xhc3Z5WUFRNJRFE"
+
+emea:
+  root: "tmp/prod/emea"
+  salesforce:
+    user: "nelson.correia@groupon.com.staging"
+    password: "R4nd0mCh4rs@#!"
+    token: "x670s5yxvfpNqyfxjUGBlJGBi7j3drf"
+    login_url: "https://test.salesforce.com"
+
+us:
+  root: "tmp/prod/us"
+  salesforce:
+    user: "nelson.correia@groupon.com.sbus"
+    password: "M04rR4nd0mCh4r5!"
+    token: "qcVZRpigIv83WiPXWAGMxoyWYq"
+    login_url: "https://test.salesforce.com"
+

@@ -1,0 +1,22 @@
+google:
+  user: "user@groupon.com"
+  password: "secret"
+  # mapping spreadsheet key
+  key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
+
+emea:
+  root: "tmp/prod/emea"
+  salesforce:
+    user: "user@groupon.comemea.staging"
+    password: ""
+    token: ""
+    login_url: "https://test.salesforce.com"
+
+us:
+  root: "tmp/prod/us"
+  salesforce:
+    user: "user@groupon.com"
+    password: ""
+    token: ""
+    login_url: "https://login.salesforce.com"
+
