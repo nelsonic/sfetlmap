@@ -13,7 +13,7 @@ emea:
     login_url: "https://test.salesforce.com"
 
 us:
-  root: "tmp/prod/us"
+  root: "tmp/prod2"
   salesforce:
     user: "user@org.com.prod2"
     password: ""
