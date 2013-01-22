@@ -16,7 +16,7 @@ us:
   root: "tmp/prod2"
   salesforce:
     user: "user@org.com.prod2"
-    password: ""
+    password: "test"
     token: ""
     login_url: "https://login.salesforce.com"
 
