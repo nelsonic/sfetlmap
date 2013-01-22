@@ -9,7 +9,7 @@ emea:
   salesforce:
     user: "user@org.com.prod1"
     password: "test"
-    token: "is a character in South Park!"
+    token: "--"
     login_url: "https://test.salesforce.com"
 
 us:
