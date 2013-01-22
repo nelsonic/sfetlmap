@@ -5,7 +5,7 @@ require 'metaf'
 describe Metaf do
 
   it 'Connects to SF instance using MetaForce' do
-      env = 'emea'
+      env = 'emea_staging'
       client = subject.connect(env)
       client.describe[:metadata_objects].collect { |type| type[:xml_name] }
   end
