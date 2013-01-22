@@ -8,7 +8,7 @@ emea:
   root: "tmp/prod1"
   salesforce:
     user: "user@org.com.prod1"
-    password: ""
+    password: "test"
     token: ""
     login_url: "https://test.salesforce.com"
 
