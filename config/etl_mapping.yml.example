@@ -5,7 +5,7 @@ google:
   key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
 
 emea:
-  root: "tmp/prod/emea"
+  root: "tmp/prod1"
   salesforce:
     user: "user@org.com.prod1"
     password: ""
