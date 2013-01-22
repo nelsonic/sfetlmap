@@ -51,7 +51,7 @@ to add files/changes. In Terminal window:
 Add the lines:
 
     *.csv
-    /config
+    config/
 
 This tells git to ignore any CSV Files and anything in /config (and its subfolders)
 
