@@ -1,23 +1,22 @@
-# Replace with *Real* Credentials to Run Script ;-)
 google:
-  user: "nelson.correia@groupon.com"
-  password: "**********"
+  user: "user@groupon.com"
+  password: "secret"
   # mapping spreadsheet key
-  key: "0AhoexkkQigOidG0zczdTTHSZBRX3Mxd2xhc3Z5WUFRNJRFE"
+  key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
 
 emea:
   root: "tmp/prod/emea"
   salesforce:
-    user: "nelson.correia@groupon.com.staging"
-    password: "R4nd0mCh4rs@#!"
-    token: "x670s5yxvfpNqyfxjUGBlJGBi7j3drf"
+    user: "user@groupon.comemea.staging"
+    password: ""
+    token: ""
     login_url: "https://test.salesforce.com"
 
 us:
-  root: "tmp/prod/us"
+  root: "tmp/prod1"
   salesforce:
-    user: "nelson.correia@groupon.com.sbus"
-    password: "M04rR4nd0mCh4r5!"
-    token: "qcVZRpigIv83WiPXWAGMxoyWYq"
-    login_url: "https://test.salesforce.com"
+    user: "user@groupon.com"
+    password: ""
+    token: ""
+    login_url: "https://login.salesforce.com"
 
