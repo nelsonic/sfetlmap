@@ -5,7 +5,7 @@ google:
   key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
 
 emea:
-  root: "tmp/prod/emea"
+  root: "tmp/prod1"
   salesforce:
     user: "user@groupon.comemea.staging"
     password: ""
@@ -13,7 +13,7 @@ emea:
     login_url: "https://test.salesforce.com"
 
 us:
-  root: "tmp/prod1"
+  root: "tmp/prod2"
   salesforce:
     user: "user@groupon.com"
     password: ""
