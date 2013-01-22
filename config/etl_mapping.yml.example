@@ -1,6 +1,6 @@
 google:
   user: "user@org.com"
-  password: "secret"
+  password: "keep-secret"
   # mapping spreadsheet key
   key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
 
