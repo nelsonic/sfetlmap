@@ -1,5 +1,3 @@
-# ignore generated CSV files,
 *.csv
-# ignore all files in config folder
 config/etl_mapping.yml
 config/etl_mapping.yml.example
