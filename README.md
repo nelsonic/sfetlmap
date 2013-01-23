@@ -5,9 +5,11 @@ This will *dramatically* streamline our business, innovation and training.
 
 The code committed to this **Public** *repo* is using 
 [**OpenSource**](http://en.wikipedia.org/wiki/Open_source) modules:
+- [Restforce](https://github.com/ejholmes/restforce)
 - [MetaForce](https://github.com/ejholmes/metaforce)
 - [Nokogiri](http://nokogiri.org/Nokogiri.html)
 - [Google_Drive](https://github.com/gimite/google-drive-ruby)
+- [Rspec](https://github.com/rspec/rspec)
 - etc
 
 So it seems *logical* / *fair* to share our work so others can *benefit* 
@@ -36,6 +38,18 @@ Right, enough *chit chat* lets get write some **code**!
 
 ### Getting Started
 
+[ ] Clone the project repository to your local machine
+
+    $ git clone git://github.com/nelsonic/sfetlmap.git
+
+[ ] create etl_mapping.yml from etl_mapping.yml.example
+
+    $ cp config/etl_mapping.yml.example config/etl_mapping.yml
+
+[] change username, password, token, client_id, client_secret in 
+your config/etl_mapping.yml file.
+
+[ ] rspec # run unit tests
 
 - - -
 
@@ -61,11 +75,11 @@ on GitHub. only the "example" which provides a template.
 
 #### Example XML Response From Fore.com (using Meatforce gem)
 
+This is from a Development Sandbox: 
 [response.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/response.xml)
-( *Obiviously* this has been edited to hide identity of user/email! )
+ ( *Obiviously* this has been edited to hide identity of user/email! )
 
-This is from a Development Sandbox. The response xml from the Production Org
-was useless: 
+The response xml from the Production Org was *useless*: 
 [insufficient_access.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/insufficient_access.xml)
 
 The last section in the 
@@ -75,10 +89,36 @@ permission"** in order to *Read* the metadata...! :-(
 
 Back to the drawing board... -> [Restforce](https://github.com/ejholmes/restforce)
 
->>
+#### Using Restforce to access Metadata via Remote Access
+
+To use the [Restforce](https://github.com/ejholmes/restforce) gem you will need
+to have a pair of **Remote Access** tokens for your Salesforce instance.
+see: http://www.salesforce.com/us/developer/docs/api_rest/Content/quickstart_oauth.htm
+
+I created a demo for this in examples/restforce.rb
+
+This script needs to be 100% non-destructive. No data should be written back to
+the "Origin" org (which in our case is a *Live* / *Production* instance!) and 
+equally we do not want to overwrite anything in the Google Spreadsheet.
+
+
+#### Google Drive 
+
+Looping through a list of Worksheets in a google Docs (Drive) Spreadsheet will
+return the following object to represent the sheet:
+
+```
+#<GoogleDrive::Worksheet worksheet_feed_url=
+"https://spreadsheets.google.com/feeds/worksheets/your-sheet-key-private/full/od6", 
+title="Origin Objects">
+```
 
 - - -
 ## Notes
+
+#### Salesforce Metadata API
+
+- http://www.salesforce.com/us/developer/docs/api_meta/index.htm
 
 #### Learning Ruby Notes
 

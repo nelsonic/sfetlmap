@@ -1,6 +1,7 @@
-# require 'spec_helper'
-# require 'mapping_doc'
+# note: this code is not being used anymore as Metaforce requires a
+# user with ModifyAllData (superuser) priviledges.
 require 'metaf'
+
 
 describe Metaf do
 
