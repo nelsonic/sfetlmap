@@ -2,7 +2,7 @@ google:
   user: "user@org.com"
   password: "keep-secret"
   # mapping spreadsheet key
-  key: "0Ar9AdEQ7K6OBdFZqUUwteWN1R0FMSU5Fa0FFTmZaM3c"
+  key: "get-key-from-spreadsheet-url"
 
 emea:
   root: "tmp/prod1"
@@ -11,6 +11,8 @@ emea:
     password: "test"
     token: "---"
     login_url: "https://test.salesforce.com"
+    client_id: ""
+    client_secret: ""
 
 us:
   root: "tmp/prod2"
@@ -19,4 +21,7 @@ us:
     password: "test"
     token: ""
     login_url: "https://login.salesforce.com"
+    client_id: ""
+    client_secret: ""
+
 
