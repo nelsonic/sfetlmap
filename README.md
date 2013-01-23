@@ -41,6 +41,8 @@ Right, enough *chit chat* lets get write some **code**!
 
 ### Dev Log
 
+#### GitIgnore
+
 First we're going to create our [.gitignore](http://git-scm.com/docs/gitignore) 
 file so we can hide config and "tmp" (temporary) folders thus protecting any 
 sensitive info. After that we can safely do **git add. && git commit -m 'msg'** 
@@ -57,32 +59,34 @@ This tells git to ignore any CSV Files and anything in /config
 (and its subfolders) you will notice thta the etl_mapping.yml does not show 
 on GitHub. only the "example" which provides a template.
 
+#### Example XML Response From Fore.com (using Meatforce gem)
+
+[response.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/response.xml)
+( *Obiviously* this has been edited to hide identity of user/email! )
+
+This is from a Development Sandbox. The response xml from the Production Org
+was useless: 
+[insufficient_access.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/insufficient_access.xml)
+
+The last section in the 
+[insufficient_access.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/insufficient_access.xml)
+file tells us that we *need* a user with **"ModifyAllData
+permission"** in order to *Read* the metadata...! :-(
+
+Back to the drawing board... -> [Restforce](https://github.com/ejholmes/restforce)
+
 >>
 
-
 - - -
-### General Notes
+## Notes
 
+#### Learning Ruby Notes
+
+- http://stackoverflow.com/questions/735073/best-way-to-require-all-files-from-a-directory-in-ruby
+
+
+#### Other
 - Kal Raman to *Streamline* Groupon:
 http://www.chicagobusiness.com/article/20120922/ISSUE01/309229981/
 
 - - -
-
-### Example XML Response From Fore.com
-
-( *Obiviously* this has been edited to hide identity of user/email! )
-
-```xml
-
-```
-
-This last bit tells us that we *need* a user with **"ModifyAllData
-permission"** in order to *Read* the metadata...! :-(
-
-If I then login to one of the Sandboxes where I do have "ModifyAllData"
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><describeMetadataResponse><result><metadataObjects><childXmlNames>CustomLabel</childXmlNames><directoryName>labels</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>labels</suffix><xmlName>CustomLabels</xmlName></metadataObjects><metadataObjects><directoryName>staticresources</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>resource</suffix><xmlName>StaticResource</xmlName></metadataObjects><metadataObjects><directoryName>scontrols</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>scf</suffix><xmlName>Scontrol</xmlName></metadataObjects><metadataObjects><directoryName>components</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>component</suffix><xmlName>ApexComponent</xmlName></metadataObjects><metadataObjects><directoryName>pages</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>page</suffix><xmlName>ApexPage</xmlName></metadataObjects><metadataObjects><directoryName>queues</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>queue</suffix><xmlName>Queue</xmlName></metadataObjects><metadataObjects><childXmlNames>CustomField</childXmlNames><childXmlNames>BusinessProcess</childXmlNames><childXmlNames>RecordType</childXmlNames><childXmlNames>WebLink</childXmlNames><childXmlNames>ValidationRule</childXmlNames><childXmlNames>NamedFilter</childXmlNames><childXmlNames>SharingReason</childXmlNames><childXmlNames>ListView</childXmlNames><childXmlNames>FieldSet</childXmlNames><childXmlNames>ApexTriggerCoupling</childXmlNames><directoryName>objects</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>object</suffix><xmlName>CustomObject</xmlName></metadataObjects><metadataObjects><directoryName>reportTypes</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>reportType</suffix><xmlName>ReportType</xmlName></metadataObjects><metadataObjects><directoryName>reports</directoryName><inFolder>true</inFolder><metaFile>false</metaFile><suffix>report</suffix><xmlName>Report</xmlName></metadataObjects><metadataObjects><directoryName>dashboards</directoryName><inFolder>true</inFolder><metaFile>false</metaFile><suffix>dashboard</suffix><xmlName>Dashboard</xmlName></metadataObjects><metadataObjects><directoryName>analyticSnapshots</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>snapshot</suffix><xmlName>AnalyticSnapshot</xmlName></metadataObjects><metadataObjects><directoryName>layouts</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>layout</suffix><xmlName>Layout</xmlName></metadataObjects><metadataObjects><directoryName>documents</directoryName><inFolder>true</inFolder><metaFile>true</metaFile><xmlName>Document</xmlName></metadataObjects><metadataObjects><directoryName>weblinks</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>weblink</suffix><xmlName>CustomPageWebLink</xmlName></metadataObjects><metadataObjects><directoryName>tabs</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>tab</suffix><xmlName>CustomTab</xmlName></metadataObjects><metadataObjects><directoryName>customApplicationComponents</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>customApplicationComponent</suffix><xmlName>CustomApplicationComponent</xmlName></metadataObjects><metadataObjects><directoryName>applications</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>app</suffix><xmlName>CustomApplication</xmlName></metadataObjects><metadataObjects><directoryName>letterhead</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>letter</suffix><xmlName>Letterhead</xmlName></metadataObjects><metadataObjects><directoryName>email</directoryName><inFolder>true</inFolder><metaFile>true</metaFile><suffix>email</suffix><xmlName>EmailTemplate</xmlName></metadataObjects><metadataObjects><childXmlNames>WorkflowFieldUpdate</childXmlNames><childXmlNames>WorkflowKnowledgePublish</childXmlNames><childXmlNames>WorkflowTask</childXmlNames><childXmlNames>WorkflowAlert</childXmlNames><childXmlNames>WorkflowSend</childXmlNames><childXmlNames>WorkflowOutboundMessage</childXmlNames><childXmlNames>WorkflowRule</childXmlNames><childXmlNames xsi:nil="true"/><directoryName>workflows</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>workflow</suffix><xmlName>Workflow</xmlName></metadataObjects><metadataObjects><directoryName>roles</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>role</suffix><xmlName>Role</xmlName></metadataObjects><metadataObjects><directoryName>territories</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>territory</suffix><xmlName>Territory</xmlName></metadataObjects><metadataObjects><directoryName>groups</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>group</suffix><xmlName>Group</xmlName></metadataObjects><metadataObjects><directoryName>homePageComponents</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>homePageComponent</suffix><xmlName>HomePageComponent</xmlName></metadataObjects><metadataObjects><directoryName>homePageLayouts</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>homePageLayout</suffix><xmlName>HomePageLayout</xmlName></metadataObjects><metadataObjects><directoryName>objectTranslations</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>objectTranslation</suffix><xmlName>CustomObjectTranslation</xmlName></metadataObjects><metadataObjects><directoryName>translations</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>translation</suffix><xmlName>Translations</xmlName></metadataObjects><metadataObjects><directoryName>flows</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>flow</suffix><xmlName>Flow</xmlName></metadataObjects><metadataObjects><directoryName>classes</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>cls</suffix><xmlName>ApexClass</xmlName></metadataObjects><metadataObjects><directoryName>triggers</directoryName><inFolder>false</inFolder><metaFile>true</metaFile><suffix>trigger</suffix><xmlName>ApexTrigger</xmlName></metadataObjects><metadataObjects><directoryName>profiles</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>profile</suffix><xmlName>Profile</xmlName></metadataObjects><metadataObjects><directoryName>permissionsets</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>permissionset</suffix><xmlName>PermissionSet</xmlName></metadataObjects><metadataObjects><directoryName>datacategorygroups</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>datacategorygroup</suffix><xmlName>DataCategoryGroup</xmlName></metadataObjects><metadataObjects><directoryName>remoteSiteSettings</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>remoteSite</suffix><xmlName>RemoteSiteSetting</xmlName></metadataObjects><metadataObjects><directoryName>sites</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>site</suffix><xmlName>CustomSite</xmlName></metadataObjects><metadataObjects><childXmlNames>LeadOwnerSharingRule</childXmlNames><childXmlNames>LeadCriteriaBasedSharingRule</childXmlNames><directoryName>leadSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>LeadSharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>CampaignOwnerSharingRule</childXmlNames><childXmlNames>CampaignCriteriaBasedSharingRule</childXmlNames><directoryName>campaignSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>CampaignSharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>CaseOwnerSharingRule</childXmlNames><childXmlNames>CaseCriteriaBasedSharingRule</childXmlNames><directoryName>caseSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>CaseSharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>ContactOwnerSharingRule</childXmlNames><childXmlNames>ContactCriteriaBasedSharingRule</childXmlNames><directoryName>contactSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>ContactSharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>OpportunityOwnerSharingRule</childXmlNames><childXmlNames>OpportunityCriteriaBasedSharingRule</childXmlNames><directoryName>opportunitySharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>OpportunitySharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>AccountOwnerSharingRule</childXmlNames><childXmlNames>AccountCriteriaBasedSharingRule</childXmlNames><directoryName>accountSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>AccountSharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>AccountTerritorySharingRule</childXmlNames><directoryName>accountTerritorySharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>AccountTerritorySharingRules</xmlName></metadataObjects><metadataObjects><childXmlNames>CustomObjectOwnerSharingRule</childXmlNames><childXmlNames>CustomObjectCriteriaBasedSharingRule</childXmlNames><directoryName>customObjectSharingRules</directoryName><inFolder>false</inFolder><metaFile>false</metaFile><suffix>sharingRules</suffix><xmlName>CustomObjectSharingRules</xmlName></metadataObjects><organizationNamespace></organizationNamespace><partialSaveAllowed>true</partialSaveAllowed><testRequired>false</testRequired></result></describeMetadataResponse></soapenv:Body></soapenv:Envelope>
-```
-
