@@ -22,7 +22,7 @@ describe Sfmap do
   it 'Retrieves JSON with of SF Object / Field Definitions' do
       result = @client.describe
       result_filename = "tmp/#{@env}_describe.txt"
-      File.open(result_filename, 'w') { |f| f.write(result.to_s) }
+      File.open(result_filename, 'w') { |f| f.write(result) }
       # pp result
   end
 
@@ -34,6 +34,10 @@ describe Sfmap do
       spreadsheet = session.spreadsheet_by_key(sheet_key)
       expect(spreadsheet.worksheet.count).to be > 0
 
+  end
+
+  it ' is pending ' do
+    pending
   end
 
 end
