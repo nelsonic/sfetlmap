@@ -13,7 +13,6 @@ client = Restforce.new :username => sfconf["user"],
   :client_id      => sfconf["client_id"],
   :client_secret  => sfconf["client_secret"]
 
-# sobjects =
   result = client.describe('Task')
   result.fields.each do |field|
     print "#{field.name} - #{field.type}\n"

@@ -1,43 +1,28 @@
-# note: this code is not being used anymore as Metaforce requires a
-# user with ModifyAllData (superuser) priviledges.
 require 'sfmap'
 require 'pp'
+require 'config'
 
 describe Sfmap do
 
   before(:all) do
-    @env = 'emea_prod'
-    @client = subject.restforce_connect(@env)
+    subject.origin_client
+    subject.gdrive_session
   end
 
-  it 'Connects to SF instance using Restforce' do
-      puts "Salesforce Org: #{@env} | Client: #{@client}"
-      # Check Task Object has a (Standard) field OwnerId:
-      result  = @client.describe('Task')
-      fields = []
-      result.fields.each {|field| fields << field.name }
-      expect(fields.include? "OwnerId").to be_true
+  it 'Retrieves List of "Origin" Org SF Object' do
+      # SF has Lots of SObjects! See:
+      # http://www.salesforce.com/us/developer/docs/officetoolkit/Content/sforce_api_objects_list.htm
+      expect(subject.origin_org_objects.length).to be > 40
   end
-
-  it 'Retrieves JSON with of SF Object / Field Definitions' do
-      result = @client.describe
-      result_filename = "tmp/#{@env}_describe.txt"
-      File.open(result_filename, 'w') { |f| f.write(result) }
-      # pp result
-  end
-
 
   it 'Connects to Google Drive Checks Spreadsheet exists' do
-  pending
-
-      sheet_key = gconf["copy"]
-      spreadsheet = session.spreadsheet_by_key(sheet_key)
-      expect(spreadsheet.worksheet.count).to be > 0
-
+      expect(subject.sheets.include? "#{subject.origin_org} Objects").to eq(true)
   end
 
-  it ' is pending ' do
-    pending
+  it 'Checks if the All SF Objects are in "Origin" Object Sheet' do
+      object_not_present = []
+
+
   end
 
 end
