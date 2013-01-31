@@ -1,27 +1,47 @@
 ## Salesforce ETL (Extract Transform Load) Mapping Script(s)
 
-We have multiple Salesforce "orgs" (instances) and need to merge them into one.
+We have *multiple* Salesforce "orgs" (instances) and need to merge them into **one**.
 This will *dramatically* streamline our business, innovation and training.
+
+The code is pretty self-explanatory. 
+I've used verbose method names and there are only **2 files** doing all the work:
+
+- **spec/sfmap_spec.rb** - runs tests to see if we can connect to salesforce and google docs,
+if we can establish connections it then exercises the methods in sfmap.rb
+- **lib/sfmap.rb** - contains all the methods for connecting to Salesforce 
+(using the **Restforce** gem) and Google Drive (aka *"Docs"* via google_drive gem).
+
+I borrowed a couple of methods from Tim's 
+[ETL-Mapping](https://github.groupondev.com/tkuntz/etl-mapping)
+Project, but ultimately simplified it to bare-bones and removed **dependencies** 
+on *Java Ant Migration Tool*. 
+The code is not a "*Jet Engine"* (i.e. plenty could be streamlined/shortened to Ruby one-liners, 
+but it *works* and is easy for even a novice to to understand. 
 
 - - -
 
 ### Getting Started
 
-[ ] Clone the project repository to your local machine
+- Clone the project repository to your local machine
 
-    $ git clone git://github.com/nelsonic/sfetlmap.git
+    ~~$ git clone git://github.com/nelsonic/sfetlmap.git~~
+    $ git clone git://github.groupondev.com/nelsoncorreia/sfetlmap.git
 
-[ ] create etl_mapping.yml from etl_mapping.yml.example
+- Create etl_mapping.yml (*configuration file*) from etl_mapping.yml.example
 
     $ cp config/etl_mapping.yml.example config/etl_mapping.yml
 
-[] change username, password, token, client_id, client_secret in 
-your config/etl_mapping.yml file.
+- change username, password, token, client_id, client_secret in 
+your **config/etl_mapping.yml** file.
 
-[ ] rspec # run unit tests
+- (Optional) Create a clone of the Mapping Spreadsheet and add the Key to the 'copy' 
+key in config file so you can do a "trial run" of the script...
+
+- Now you can run the Rspec unit tests file. (this will update the Spreadsheet if all tests pass)
+
+    $ rspec spec/sfmap_spec.rb
 
 - - -
-
 
 
 The code committed to this **Public** *repo* is using 
@@ -64,16 +84,13 @@ on GitHub. only the "example" which provides a template.
 
 #### Example XML Response From Fore.com (using Meatforce gem)
 
-This is from a Development Sandbox: 
-[response.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/response.xml)
- ( *Obiviously* this has been edited to hide identity of user/email! )
+This is from a Development Sandbox: **examples/response.xml** 
+( *Obiviously* this has been edited to hide identity of user/email! )
 
-The response xml from the Production Org was *useless*: 
-[insufficient_access.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/insufficient_access.xml)
+The response xml from the Production Org was *useless*: **examples/insufficient_access.xml**
 
 The last section in the 
-[insufficient_access.xml](https://github.com/nelsonic/sfetlmap/blob/master/examples/insufficient_access.xml)
-file tells us that we *need* a user with **"ModifyAllData
+**examples/insufficient_access.xml** file tells us that we *need* a user with **"ModifyAllData
 permission"** in order to *Read* the metadata...! :-(
 
 Back to the drawing board... -> [Restforce](https://github.com/ejholmes/restforce)
