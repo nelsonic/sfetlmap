@@ -42,19 +42,6 @@ structure (metadata) XML files and org names! There is Zero
 [PII](http://en.wikipedia.org/wiki/Personally_identifiable_information) so no
 risk is posed. No *data* will *ever* be publicly visible.
 
-This work is *not* 
-[**"Secret Sauce"**](http://en.wikipedia.org/wiki/Secret_ingredient) or 
-[**"Competitive Info"**](http://en.wikipedia.org/wiki/Competitive_intelligence) 
-if anything it shows people we are *streamlining* our ops. But that's 
-[**"Public Knowledge"**](http://techcrunch.com/tag/groupon/). Everyone knows
-that Andrew AcquiHired [*MyCityDeal*](http://goo.gl/SBAeS) but never fully 
-integrated/migrated Groupon *"International"* into the main platform/org.
-Again, this is *widely known* info! See:
-[*"Maybe International Can Wait"*](http://goo.gl/DpOyy) or Econsultancy: 
-http://econsultancy.com/us/blog/11246-did-international-expansion-kill-groupon
-
-Right, enough *chit chat* lets get write some **code**!
-
 ### Dev Log
 
 #### GitIgnore
@@ -125,10 +112,7 @@ title="Origin Objects">
 #### Learning Ruby Notes
 
 - http://stackoverflow.com/questions/735073/best-way-to-require-all-files-from-a-directory-in-ruby
-
-
-#### Other
-- Kal Raman to *Streamline* Groupon:
-http://www.chicagobusiness.com/article/20120922/ISSUE01/309229981/
+- Ruby Tricks: http://www.rubyinside.com/21-ruby-tricks-902.html
+- Ruby Regular Expressions: http://net.tutsplus.com/tutorials/ruby/ruby-for-newbies-regular-expressions/
 
 - - -
