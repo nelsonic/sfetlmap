@@ -27,8 +27,8 @@ your config/etl_mapping.yml file.
 The code committed to this **Public** *repo* is using 
 [**OpenSource**](http://en.wikipedia.org/wiki/Open_source) modules:
 - [Restforce](https://github.com/ejholmes/restforce)
-- [MetaForce](https://github.com/ejholmes/metaforce)
-- [Nokogiri](http://nokogiri.org/Nokogiri.html)
+- ~~[MetaForce](https://github.com/ejholmes/metaforce)~~
+- ~~[Nokogiri](http://nokogiri.org/Nokogiri.html)~~
 - [Google_Drive](https://github.com/gimite/google-drive-ruby)
 - [Rspec](https://github.com/rspec/rspec)
 - etc
