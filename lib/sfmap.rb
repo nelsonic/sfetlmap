@@ -5,6 +5,12 @@ require 'restforce'
 class Sfmap
   attr_accessor :conf
 
+  def initialize
+    gconf
+    gdrive_session
+    @origin_client = restforce_connect(origin_env)
+  end
+
   def key
     @key ||= 'copy'
   end
@@ -26,9 +32,9 @@ class Sfmap
     @origin_env ||= 'emea_prod' # default "origin" sf org
   end
 
-  def target_org
-    @target_org
-  end
+  # def target_org
+    # @target_org
+  # end
 
   def excluded_objects_patterns # this should be in a User-Editable SpreadSheet!!
     @excluded_objects_patterns ||= [
@@ -65,7 +71,6 @@ class Sfmap
   # end
 
   def list_salesforce_objects(client)
-      # @excluded_objects_patterns ||= excluded_objects_patterns
       client ||= @client
       result = client.describe
       sf_objects = []
@@ -129,8 +134,8 @@ class Sfmap
   def list_sf_obejcts_in_sheet(ws,column)
     origin_objects_in_sheet = []
     i = 1
-    # first_empty_cell =  find_first_empty_cell_in_col(sheet_name,column)
-    until i > ws.max_rows
+    first_empty_cell =  find_first_empty_cell_in_col(ws,column)
+    until i > first_empty_cell
       i = i + 1
       origin_objects_in_sheet <<  ws[i, column]
     end
@@ -144,9 +149,7 @@ class Sfmap
   def list_sf_objects_not_in_origin_sheet(origin_objects, objects_in_sheet)
     origin_objects_not_in_sheet = []
     origin_objects.each do |object|
-      if(objects_in_sheet.include? object)
-          # object is present do nothing.
-      else
+      if(!objects_in_sheet.include? object)
         origin_objects_not_in_sheet << object
       end
     end
@@ -164,7 +167,7 @@ class Sfmap
    end
 
    # Updating the Individual Sheets is a bit more Complex than it needed to be.
-   # Some sheets have the Field name colum in the 2nd column others in the 3rd/4th
+   # Some sheets have the 'Field' name colum in the 2nd column others in the 3rd or 4th
    # so our script needs to "learn" which column is for which data
    # field_name_col, field_type_col, field_default_col
    # the function will take the sheet and a hash of fields as parameters
@@ -182,8 +185,9 @@ class Sfmap
         end
       end
       if down == ws.num_rows
+        raise "Cannot Find Column #{column_name} in #{ws}"
       end
-      across # i.e. return the column index
+      across # i.e. return the column index / failure not an option!
    end
 
    def list_obejct_fields_in_sheet(ws,column)
@@ -213,7 +217,11 @@ class Sfmap
     empty_cell
   end
 
-  def sheets_to_update
+  def sheets_to_update(ws,column)
+    sheets_to_update = list_obejct_fields_in_sheet(ws,column) # recycled method
+  end
+
+  def sheets_to_update_GENERIC
     @sheets_to_update = []
     @origin_org_objects ||= origin_org_objects
     @sheets ||= sheets
@@ -225,7 +233,38 @@ class Sfmap
     @sheets_to_update
   end
 
+  def object_fields_to_update(object)
+    ws                     = find_worksheet_by object
+    field_col = find_column_number_by_name_in_sheet(ws,'Field')
+    object_fields_in_sheet = list_obejct_fields_in_sheet(ws,field_col)
+    obj_fields = {}
+    result = @origin_client.describe(object)
+    result.fields.each do |item|
+      if !object_fields_in_sheet.include? item.name
+        obj_fields[item.name] = {"name"=> item.name,
+                                "type" => item.type,
+                                "default" => item.defaultValue }
+      end
+    end
+    obj_fields
+  end
 
+  def update_fields_for_object(obj, obj_fields)
+    puts ">> Updating #{obj} ..."
+    ws          = find_worksheet_by obj
+    field_col   = find_column_number_by_name_in_sheet(ws,'Field')
+    type_col    = find_column_number_by_name_in_sheet(ws,'Type')
+    default_col = find_column_number_by_name_in_sheet(ws,'Default Value')
+    empty_cell  = find_first_empty_cell_in_col(ws,field_col)
+    obj_fields.each do |key,value|
+      # puts " #{empty_cell} v: #{value['name']} t: #{value['type']} d: #{value['default']}"
+      ws[empty_cell, field_col]   = value["name"]
+      ws[empty_cell, type_col]    = value["type"]
+      ws[empty_cell, default_col] = value["default"]
+      empty_cell += 1
+    end
+    ws.save()
+  end
 
 
 end
