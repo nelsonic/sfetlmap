@@ -15,9 +15,12 @@ I borrowed a couple of methods from Tim's
 [ETL-Mapping](https://github.groupondev.com/tkuntz/etl-mapping)
 Project, but ultimately simplified it to bare-bones and removed **dependencies** 
 on *Java Ant Migration Tool*. 
-The code is not a "*Jet Engine"* (i.e. plenty could be streamlined/shortened to Ruby one-liners, 
-but it *works* and is easy for even a novice to to understand. 
+The code is not a *"Jet Engine"* (i.e. *plenty* could be streamlined/shortened to Ruby one-liners, 
+but it *works* and is easy for even a novice to to understand.
 
+Feel free to re-factor / clean up if you have the time. 
+
+For now it works so need to move on to other tasks! :-)
 - - -
 
 ### Getting Started

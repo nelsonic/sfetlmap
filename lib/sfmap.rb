@@ -29,7 +29,7 @@ class Sfmap
   end
 
   def origin_env
-    @origin_env ||= 'emea_prod' # default "origin" sf org
+    @origin_env ||=  origin_org.downcase + '_prod' # default "origin" sf org
   end
 
   # def target_org
@@ -265,6 +265,4 @@ class Sfmap
     end
     ws.save()
   end
-
-
 end
